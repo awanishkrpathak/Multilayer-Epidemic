@@ -1,39 +1,3 @@
-!===============================================================================
-! COVID-19 RURAL vs URBAN - COMPLETE BAYESIAN CALIBRATION FRAMEWORK
-! Corrected, self-contained Fortran 2008 implementation of the supplied model.
-!
-! Preserved model/data/settings from the supplied COVID source:
-!   NDIM=5: alpha, season, A_week, rho, sigma
-!   N_AGE=10, NDATA=30, NWALKERS=64, NSTEPS=30000,
-!   BURN_MCMC=35000, THIN=20, N_POSTERIOR_MODELS=2000
-!
-! Corrections:
-!   * Correct parameter-bound construction
-!   * MLE optimized using the same Gaussian likelihood as MCMC
-!   * sigma profiled analytically during MLE optimization
-!   * correct parameter-specific R-hat assignment
-!   * corrected chain-printing variable
-!
-! Other model/data/settings/output filenames are unchanged.
-!
-! Output files:
-!   RURAL_COVID_Fit_Results.csv
-!   RURAL_COVID_Posterior_Samples.dat
-!   RURAL_COVID_MCMC_Diagnostics.dat
-!   RURAL_COVID_Parameter_Summary.dat
-!   RURAL_COVID_Summary.txt
-!
-!   URBAN_COVID_Fit_Results.csv
-!   URBAN_COVID_Posterior_Samples.dat
-!   URBAN_COVID_MCMC_Diagnostics.dat
-!   URBAN_COVID_Parameter_Summary.dat
-!   URBAN_COVID_Summary.txt
-!
-!   COVID_Rural_Urban_Combined_Results.csv
-!
-! No external libraries are required.
-!===============================================================================
-
 
 module precision_mod
   implicit none
