@@ -1,14 +1,3 @@
-!===============================================================================
-! RSV LYON - INFLUENZA-MATCHED MCMC + DIAGNOSTICS VERSION
-!
-! Fixes applied relative to the original:
-!   1. Posterior ensemble evaluation: fixed RNG seed usage (dedicated post_seed,
-!      indices drawn ONCE and reused).
-!   2. Gaussian prior on shift (mean 0, sigma = SHIFT_PRIOR_SIGMA).
-!   3. Posterior ensemble evaluation uses a fixed set of posterior draws.
-!   4. C*B matrix ordering is used in the force of infection.
-!   5. Bootstrap and convergence diagnostics are intentionally omitted.
-!===============================================================================
 
 module precision_mod
   implicit none
@@ -755,20 +744,6 @@ contains
   end subroutine summary_stats
 
 
-  !===========================================================================
-  ! SPLIT-RHAT DIAGNOSTIC
-  !
-  ! flat_samples are stored as:
-  !
-  !   retained iteration 1: walkers 1,...,NWALKERS
-  !   retained iteration 2: walkers 1,...,NWALKERS
-  !   ...
-  !
-  ! Each walker therefore forms an individual chain.
-  !
-  ! The chains are split into two equal halves and the maximum split-Rhat
-  ! across the four parameters is returned.
-  !===========================================================================
 
   subroutine calculate_max_rhat(flat_samples, max_rhat)
 
